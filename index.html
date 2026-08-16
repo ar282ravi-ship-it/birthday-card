@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>A Birthday Surprise ❤️</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Floating background elements -->
+    <div class="floating-elements">
+        <span>❤️</span>
+        <span>✨</span>
+        <span>💕</span>
+        <span>✨</span>
+        <span>❤️</span>
+    </div>
+
+
+    <!-- ========================= -->
+    <!-- OPENING SCREEN -->
+    <!-- ========================= -->
+
+    <section id="openingScreen">
+
+        <div class="opening-content">
+
+            <div class="sparkles">✨ ✨ ✨</div>
+
+            <div class="gift" id="gift">
+                🎁
+            </div>
+
+            <h1>
+                Someone made something
+                <br>
+                special for you ❤️
+            </h1>
+
+            <p>
+                There's a little birthday surprise waiting...
+            </p>
+
+            <button onclick="openCard()">
+                Open Your Surprise 🎁
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- ========================= -->
+    <!-- BIRTHDAY CARD -->
+    <!-- ========================= -->
+
+    <section id="birthdayCard" class="hidden">
+
+        <div class="birthday-container">
+
+            <div class="balloons">
+                <span>🎈</span>
+                <span>🎈</span>
+                <span>🎈</span>
+            </div>
+
+
+            <div class="card">
+
+                <div class="top-sparkles">
+                    ✨ ✨ ✨
+                </div>
+
+                <h1 class="birthday-title">
+                    HAPPY BIRTHDAY
+                </h1>
+
+                <h2>
+                    Samyuktha ❤️
+                </h2>
+
+
+                <!-- YOUR IMAGE -->
+               <div class="photo-container">
+
+    <img
+        src="./images/friend.jpg.jpeg"
+        alt="Samyuktha"
+        class="friendPhoto"
+    >
+
+</div>
+
+
+                <div class="message">
+
+                    <p>
+                        Wishing you the happiest birthday! 🎂
+                    </p>
+
+                    <p>
+                        May your day be filled with
+                        happiness, laughter and lots
+                        of beautiful memories.
+                    </p>
+
+                    <p>
+                        And may this year be even
+                        more amazing than the last. ❤️
+                    </p>
+
+                </div>
+
+
+                <div class="divider">
+                    ❤️
+                </div>
+
+
+                <p class="from">
+                    With lots of love,
+                    <br>
+                    <strong>Arun ❤️</strong>
+                </p>
+
+            </div>
+
+
+            <div class="bottom-balloons">
+                🎈 💕 🎈
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- MUSIC -->
+
+    <audio id="birthdayMusic" loop>
+
+        <source
+            src="music/birthday.mp3"
+            type="audio/mpeg">
+
+    </audio>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>

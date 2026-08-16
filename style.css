@@ -1,0 +1,631 @@
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    min-height: 100%;
+}
+
+body {
+    font-family: Georgia, "Times New Roman", serif;
+
+    background:
+        radial-gradient(circle at top, #ffb6c9, #ff6f91 45%, #c44569);
+
+    min-height: 100vh;
+
+    overflow-x: hidden;
+}
+
+
+/* ========================= */
+/* OPENING SCREEN */
+/* ========================= */
+
+#openingScreen {
+
+    width: 100%;
+    height: 100vh;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+
+    color: white;
+
+    position: relative;
+
+    overflow: hidden;
+}
+
+
+.opening-content {
+
+    position: relative;
+
+    z-index: 5;
+
+    padding: 30px;
+}
+
+
+.sparkles {
+
+    font-size: 25px;
+
+    margin-bottom: 20px;
+
+    animation: sparkle 2s infinite;
+}
+
+
+.gift {
+
+    font-size: 110px;
+
+    cursor: pointer;
+
+    animation: giftBounce 1.5s infinite;
+
+    filter:
+        drop-shadow(0 15px 20px rgba(0,0,0,0.25));
+}
+
+
+#openingScreen h1 {
+
+    font-size: 34px;
+
+    line-height: 1.3;
+
+    margin: 25px 0 10px;
+}
+
+
+#openingScreen p {
+
+    font-family: Arial, sans-serif;
+
+    font-size: 17px;
+
+    opacity: 0.9;
+
+}
+
+
+button {
+
+    margin-top: 25px;
+
+    padding: 16px 30px;
+
+    border: none;
+
+    border-radius: 40px;
+
+    background: white;
+
+    color: #e84a70;
+
+    font-size: 17px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 10px 30px rgba(0,0,0,0.25);
+
+    transition: 0.3s;
+}
+
+
+button:hover {
+
+    transform: scale(1.08);
+
+    box-shadow:
+        0 15px 35px rgba(0,0,0,0.3);
+}
+
+
+/* ========================= */
+/* BIRTHDAY PAGE */
+/* ========================= */
+
+#birthdayCard {
+
+    min-height: 100vh;
+
+    padding: 50px 20px;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+}
+
+
+.birthday-container {
+
+    width: 100%;
+
+    max-width: 550px;
+
+    text-align: center;
+
+    position: relative;
+
+}
+
+
+.card {
+
+    background:
+        rgba(255,255,255,0.96);
+
+    border-radius: 35px;
+
+    padding: 35px 30px 40px;
+
+    box-shadow:
+        0 25px 70px rgba(0,0,0,0.3);
+
+    animation: cardAppear 1.5s ease;
+
+}
+
+
+.top-sparkles {
+
+    font-size: 20px;
+
+    margin-bottom: 10px;
+}
+
+
+.birthday-title {
+
+    color: #e84a70;
+
+    font-size: 32px;
+
+    margin: 5px 0 10px;
+
+    letter-spacing: 2px;
+}
+
+
+.card h2 {
+
+    color: #444;
+
+    font-size: 30px;
+
+    margin: 10px 0 20px;
+}
+
+
+/* ========================= */
+/* PHOTO */
+/* ========================= */
+
+.photo-container {
+
+    width: 210px;
+
+    height: 210px;
+
+    margin: 0 auto 25px;
+
+    border-radius: 50%;
+
+    padding: 7px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ff6f91,
+            #ffc3d0,
+            #ff6f91
+        );
+
+    animation: photoGlow 2s infinite alternate;
+}
+
+
+.friendPhoto {
+
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: cover;
+
+    border-radius: 50%;
+
+    display: block;
+}
+
+
+/* ========================= */
+/* MESSAGE */
+/* ========================= */
+
+.message {
+
+    color: #555;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 17px;
+
+    line-height: 1.7;
+
+}
+
+
+.message p {
+
+    margin: 12px 0;
+}
+
+
+.divider {
+
+    margin: 25px 0;
+
+    color: #e84a70;
+
+    font-size: 20px;
+}
+
+
+.from {
+
+    color: #777;
+
+    font-family: Arial, sans-serif;
+
+    line-height: 1.7;
+}
+
+
+.from strong {
+
+    color: #e84a70;
+
+    font-size: 20px;
+}
+
+
+/* ========================= */
+/* BALLOONS */
+/* ========================= */
+
+.balloons {
+
+    display: flex;
+
+    justify-content: space-around;
+
+    margin-bottom: -25px;
+
+    position: relative;
+
+    z-index: 3;
+}
+
+
+.balloons span {
+
+    font-size: 50px;
+
+    animation: balloonFloat 3s ease-in-out infinite;
+}
+
+
+.balloons span:nth-child(2) {
+
+    animation-delay: 0.5s;
+}
+
+
+.balloons span:nth-child(3) {
+
+    animation-delay: 1s;
+}
+
+
+.bottom-balloons {
+
+    font-size: 40px;
+
+    margin-top: 20px;
+
+    animation: balloonFloat 3s infinite;
+}
+
+
+/* ========================= */
+/* FLOATING HEARTS */
+/* ========================= */
+
+.floating-elements span {
+
+    position: fixed;
+
+    font-size: 25px;
+
+    opacity: 0.6;
+
+    animation: floatUp 8s linear infinite;
+
+    z-index: 1;
+}
+
+
+.floating-elements span:nth-child(1) {
+
+    left: 10%;
+    bottom: -50px;
+
+}
+
+
+.floating-elements span:nth-child(2) {
+
+    left: 30%;
+    bottom: -50px;
+
+    animation-delay: 2s;
+
+}
+
+
+.floating-elements span:nth-child(3) {
+
+    left: 55%;
+    bottom: -50px;
+
+    animation-delay: 4s;
+
+}
+
+
+.floating-elements span:nth-child(4) {
+
+    left: 75%;
+    bottom: -50px;
+
+    animation-delay: 1s;
+
+}
+
+
+.floating-elements span:nth-child(5) {
+
+    left: 90%;
+    bottom: -50px;
+
+    animation-delay: 5s;
+
+}
+
+
+/* ========================= */
+/* HIDDEN */
+/* ========================= */
+
+.hidden {
+
+    display: none !important;
+
+}
+
+
+/* ========================= */
+/* ANIMATIONS */
+/* ========================= */
+
+@keyframes giftBounce {
+
+    0%, 100% {
+        transform: translateY(0) rotate(0);
+    }
+
+    50% {
+        transform: translateY(-20px) rotate(5deg);
+    }
+
+}
+
+
+@keyframes sparkle {
+
+    0%, 100% {
+        opacity: 0.5;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.2);
+    }
+
+}
+
+
+@keyframes cardAppear {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            scale(0.7)
+            translateY(50px)
+            rotate(-3deg);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            scale(1)
+            translateY(0)
+            rotate(0);
+
+    }
+
+}
+
+
+@keyframes photoGlow {
+
+    from {
+
+        box-shadow:
+            0 0 10px rgba(255,111,145,0.4);
+
+    }
+
+    to {
+
+        box-shadow:
+            0 0 35px rgba(255,111,145,0.9);
+
+    }
+
+}
+
+
+@keyframes balloonFloat {
+
+    0%, 100% {
+
+        transform:
+            translateY(0)
+            rotate(-3deg);
+
+    }
+
+    50% {
+
+        transform:
+            translateY(-15px)
+            rotate(3deg);
+
+    }
+
+}
+
+
+@keyframes floatUp {
+
+    0% {
+
+        transform:
+            translateY(0)
+            rotate(0);
+
+    }
+
+    100% {
+
+        transform:
+            translateY(-110vh)
+            rotate(360deg);
+
+        opacity: 0;
+
+    }
+
+}
+
+
+/* ========================= */
+/* MOBILE */
+/* ========================= */
+
+@media (max-width: 600px) {
+
+    #openingScreen h1 {
+
+        font-size: 26px;
+
+    }
+
+    .gift {
+
+        font-size: 85px;
+
+    }
+
+    .card {
+
+        padding: 28px 20px 35px;
+
+    }
+
+    .birthday-title {
+
+        font-size: 25px;
+
+    }
+
+    .card h2 {
+
+        font-size: 25px;
+
+    }
+
+    .photo-container {
+
+        width: 170px;
+
+        height: 170px;
+
+    }
+
+    .message {
+
+        font-size: 16px;
+
+    }
+
+}
+@keyframes confettiFall {
+
+    0% {
+
+        transform:
+            translateY(0)
+            rotate(0deg);
+
+        opacity: 1;
+
+    }
+
+    100% {
+
+        transform:
+            translateY(110vh)
+            rotate(720deg);
+
+        opacity: 0;
+
+    }
+
+}
