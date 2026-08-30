@@ -2,156 +2,493 @@
 <html lang="en">
 
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>A Birthday Surprise ❤️</title>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="style.css">
+    <title>Something Special ❤️</title>
+
+    <link rel="stylesheet"
+          href="./style.css">
+
 </head>
+
 
 <body>
 
-    <!-- Floating background elements -->
-    <div class="floating-elements">
-        <span>❤️</span>
-        <span>✨</span>
-        <span>💕</span>
-        <span>✨</span>
-        <span>❤️</span>
+
+<!-- ================================================= -->
+<!-- BACKGROUND -->
+<!-- ================================================= -->
+
+<div id="backgroundHearts"></div>
+
+
+<!-- ================================================= -->
+<!-- OPENING SCREEN -->
+<!-- ================================================= -->
+
+<section id="openingScreen">
+
+    <div class="opening-content">
+
+        <div class="small-stars">
+            ✨ &nbsp; ✨ &nbsp; ✨
+        </div>
+
+
+        <div id="gift"
+             class="gift">
+
+            🎁
+
+        </div>
+
+
+        <h1>
+
+            Someone made something
+            <br>
+            special for you ❤️
+
+        </h1>
+
+
+        <p class="opening-subtitle">
+
+            There's a little surprise
+            waiting for you...
+
+        </p>
+
+
+        <button id="openButton"
+                onclick="openSurprise()">
+
+            Open Your Surprise 🎁
+
+        </button>
+
     </div>
 
+</section>
 
-    <!-- ========================= -->
-    <!-- OPENING SCREEN -->
-    <!-- ========================= -->
 
-    <section id="openingScreen">
 
-        <div class="opening-content">
+<!-- ================================================= -->
+<!-- MAIN EXPERIENCE -->
+<!-- ================================================= -->
 
-            <div class="sparkles">✨ ✨ ✨</div>
+<main id="mainExperience"
+      class="hidden">
 
-            <div class="gift" id="gift">
-                🎁
-            </div>
 
-            <h1>
-                Someone made something
-                <br>
-                special for you ❤️
-            </h1>
+    <!-- ============================================= -->
+    <!-- BIRTHDAY HERO -->
+    <!-- ============================================= -->
 
-            <p>
-                There's a little birthday surprise waiting...
-            </p>
+    <section class="hero-section">
 
-            <button onclick="openCard()">
-                Open Your Surprise 🎁
-            </button>
+
+        <div class="hero-stars">
+            ✨ ✨ ✨
+        </div>
+
+
+        <p class="small-intro">
+
+            Today is a little more special...
+
+        </p>
+
+
+        <h1 class="birthday-title">
+
+            HAPPY BIRTHDAY
+
+        </h1>
+
+
+        <h2 class="machaan">
+
+            Machaan❤️
+
+        </h2>
+
+
+        <!-- NAME TYPING ANIMATION -->
+
+        <div id="nameAnimation"
+             class="name-animation">
+
+        </div>
+
+
+        <div class="scroll-hint">
+
+            ↓
 
         </div>
 
     </section>
 
 
-    <!-- ========================= -->
-    <!-- BIRTHDAY CARD -->
-    <!-- ========================= -->
 
-    <section id="birthdayCard" class="hidden">
+    <!-- ============================================= -->
+    <!-- PHOTO REVEAL -->
+    <!-- ============================================= -->
 
-        <div class="birthday-container">
+    <section class="photo-section">
 
-            <div class="balloons">
-                <span>🎈</span>
-                <span>🎈</span>
-                <span>🎈</span>
+
+        <p class="section-label">
+
+            A little memory ❤️
+
+        </p>
+
+
+        <div class="photo-frame">
+
+            <div class="photo-glow"></div>
+
+
+            <img src="./images/friend.jpg.jpeg"
+                 alt="Kavipriya"
+                 class="friendPhoto">
+
+        </div>
+
+
+        <p class="photo-caption">
+
+            Some people simply make life
+            a little brighter. ❤️
+
+        </p>
+
+    </section>
+
+
+
+    <!-- ============================================= -->
+    <!-- PERSONAL LETTER -->
+    <!-- ============================================= -->
+
+    <section class="letter-section">
+
+
+        <div class="letter-card">
+
+
+            <div class="letter-decoration">
+
+                ✨
+
             </div>
 
 
-            <div class="card">
+            <h2>
 
-                <div class="top-sparkles">
-                    ✨ ✨ ✨
-                </div>
+                A little message for you...
 
-                <h1 class="birthday-title">
-                    HAPPY BIRTHDAY
-                </h1>
-
-                <h2>
-                    Samyuktha ❤️
-                </h2>
+            </h2>
 
 
-                <!-- YOUR IMAGE -->
-               <div class="photo-container">
+            <div class="letter">
 
-    <img
-        src="./images/friend.jpg.jpeg"
-        alt="Samyuktha"
-        class="friendPhoto"
-    >
-
-</div>
+                <p>
+                    Happy Birthday, Kavipriya ❤️
+                </p>
 
 
-                <div class="message">
-
-                    <p>
-                        Wishing you the happiest birthday! 🎂
-                    </p>
-
-                    <p>
-                        May your day be filled with
-                        happiness, laughter and lots
-                        of beautiful memories.
-                    </p>
-
-                    <p>
-                        And may this year be even
-                        more amazing than the last. ❤️
-                    </p>
-
-                </div>
+                <p>
+                    I wanted to do something
+                    a little different this year.
+                </p>
 
 
-                <div class="divider">
-                    ❤️
-                </div>
+                <p>
+                    Not just a simple
+                    "Happy Birthday",
+                    but something that would
+                    remind you how special
+                    you are.
+                </p>
 
 
-                <p class="from">
+                <p>
+                    I hope this year brings you
+                    lots of happiness, laughter,
+                    beautiful moments and
+                    everything you've been
+                    wishing for.
+                </p>
+
+
+                <p>
+                    Keep smiling, keep being
+                    yourself, and keep making
+                    the people around you smile.
+                </p>
+
+
+                <p>
+                    And most importantly...
+                    enjoy your day. ❤️
+                </p>
+
+
+                <p class="letter-ending">
+
                     With lots of love,
+
                     <br>
-                    <strong>Arun ❤️</strong>
+
+                    <strong>
+                        Arun ❤️
+                    </strong>
+
                 </p>
 
             </div>
 
 
-            <div class="bottom-balloons">
-                🎈 💕 🎈
-            </div>
-
         </div>
 
     </section>
 
 
-    <!-- MUSIC -->
 
-    <audio id="birthdayMusic" loop>
+    <!-- ============================================= -->
+    <!-- MEMORY SECTION -->
+    <!-- ============================================= -->
 
-        <source
-            src="music/birthday.mp3"
-            type="audio/mpeg">
-
-    </audio>
+    <section class="memory-section">
 
 
-    <script src="script.js"></script>
+        <p class="section-label">
+
+            Little moments ❤️
+
+        </p>
+
+
+        <h2>
+
+            Memories
+
+        </h2>
+
+
+        <div class="memory-gallery">
+
+
+            <div class="memory-card">
+
+                <img src="./images/friend.jpg.jpeg"
+                     alt="Memory">
+
+                <p>
+                    One beautiful memory ❤️
+                </p>
+
+            </div>
+
+
+            <!--
+            ADD MORE PHOTOS LATER
+
+            <div class="memory-card">
+
+                <img src="./images/memory1.jpg">
+
+                <p>
+                    That day... ❤️
+                </p>
+
+            </div>
+
+            -->
+
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- ============================================= -->
+    <!-- CAKE -->
+    <!-- ============================================= -->
+
+    <section class="cake-section">
+
+
+        <p class="section-label">
+
+            One last thing...
+
+        </p>
+
+
+        <h2>
+
+            Make a wish 🎂
+
+        </h2>
+
+
+        <p class="cake-instruction">
+
+            Tap the candle ❤️
+
+        </p>
+
+
+        <div id="cake"
+             class="cake">
+
+
+            <!-- FLAME -->
+
+            <div id="flame"
+                 class="flame">
+
+                🔥
+
+            </div>
+
+
+            <!-- CANDLE -->
+
+            <div class="candle">
+
+            </div>
+
+
+            <!-- CAKE -->
+
+            <div class="cake-top">
+
+            </div>
+
+
+            <div class="cake-body">
+
+            </div>
+
+
+            <div class="cake-plate">
+
+            </div>
+
+
+        </div>
+
+
+        <button id="wishButton"
+                onclick="makeWish()">
+
+            Make My Wish ✨
+
+        </button>
+
+
+    </section>
+
+
+
+    <!-- ============================================= -->
+    <!-- FINAL MESSAGE -->
+    <!-- ============================================= -->
+
+    <section id="finalSection"
+             class="final-section hidden">
+
+
+        <div class="final-content">
+
+
+            <div class="final-stars">
+
+                ✨ ✨ ✨
+
+            </div>
+
+
+            <h1>
+
+                HAPPY BIRTHDAY
+
+            </h1>
+
+
+            <h2>
+
+                Kavipriya ❤️
+
+            </h2>
+
+
+            <p>
+
+                I hope this little surprise
+                made you smile.
+
+            </p>
+
+
+            <p>
+
+                You deserve all the happiness
+                in the world.
+
+            </p>
+
+
+            <div class="final-hearts">
+
+                ❤️ ❤️ ❤️
+
+            </div>
+
+
+            <p class="final-signature">
+
+                — Arun
+
+            </p>
+
+        </div>
+
+
+    </section>
+
+
+</main>
+
+
+
+<!-- ================================================= -->
+<!-- MUSIC -->
+<!-- ================================================= -->
+
+<audio id="birthdayMusic"
+       loop>
+
+    <source
+        src="./music/birthday.mp3"
+        type="audio/mpeg">
+
+</audio>
+
+
+
+<script src="./script.js"></script>
 
 </body>
 
