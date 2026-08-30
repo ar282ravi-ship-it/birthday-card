@@ -313,73 +313,60 @@ function createConfetti() {
 
 function makeWish() {
 
-
     const flame =
-        document.getElementById(
-            "flame"
-        );
+        document.getElementById("flame");
+
+    const finalSection =
+        document.getElementById("finalSection");
 
 
     /* Prevent multiple clicks */
 
-    if (
-        flame.dataset.blown ===
-        "true"
-    ) {
-
+    if (flame.dataset.blown === "true") {
         return;
-
     }
 
 
-    flame.dataset.blown =
-        "true";
+    flame.dataset.blown = "true";
 
 
-    /* Put out the candle */
+    /* Blow out the candle */
 
-    flame.innerText =
-        "💨";
+    flame.innerText = "💨";
 
+    flame.style.animation = "none";
 
-    flame.style.animation =
-        "none";
-
-
-    flame.style.cursor =
-        "default";
+    flame.style.cursor = "default";
 
 
-    /* Celebration */
+    /* Small celebration */
 
     createConfetti();
 
 
-    /* Reveal final message */
+    /*
+       Wait for the smoke effect,
+       then reveal the final message.
+    */
 
     setTimeout(function () {
 
+        finalSection.classList.remove("hidden");
 
-        const finalSection =
-            document.getElementById(
-                "finalSection"
-            );
+        /*
+           Give the browser a moment to
+           render the section before scrolling.
+        */
 
+        setTimeout(function () {
 
-        finalSection.classList.remove(
-            "hidden"
-        );
+            finalSection.scrollIntoView({
+                behavior: "smooth",
+                block: "start"
+            });
 
+        }, 100);
 
-        finalSection.scrollIntoView({
-
-            behavior: "smooth",
-
-            block: "center"
-
-        });
-
-
-    }, 1800);
+    }, 1200);
 
 }
