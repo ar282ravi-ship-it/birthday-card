@@ -1,115 +1,89 @@
-/* ================================================= */
-/* BACKGROUND HEARTS */
-/* ================================================= */
+/* =========================================================
+   BIRTHDAY CARD - COMPLETE SCRIPT
+   ========================================================= */
+
+
+/* =========================================================
+   BACKGROUND HEARTS
+   ========================================================= */
 
 function createBackgroundHearts() {
 
     const container =
-        document.getElementById(
-            "backgroundHearts"
-        );
+        document.getElementById("backgroundHearts");
 
+    if (!container) {
+        return;
+    }
 
     const hearts = [
-
         "❤️",
         "💕",
         "💗",
+        "💖",
         "✨",
-        "🤍"
-
+        "🤍",
+        "🌸"
     ];
 
-
-    for (
-        let i = 0;
-        i < 22;
-        i++
-    ) {
-
+    for (let i = 0; i < 25; i++) {
 
         const heart =
-            document.createElement(
-                "span"
-            );
-
+            document.createElement("span");
 
         heart.innerText =
             hearts[
                 Math.floor(
-                    Math.random() *
-                    hearts.length
+                    Math.random() * hearts.length
                 )
             ];
 
-
         heart.style.left =
-            Math.random() * 100 +
-            "vw";
-
+            Math.random() * 100 + "vw";
 
         heart.style.fontSize =
-            (
-                Math.random() * 18 +
-                15
-            ) + "px";
-
+            (Math.random() * 18 + 14) + "px";
 
         heart.style.animationDuration =
-            (
-                Math.random() * 5 +
-                7
-            ) + "s";
-
+            (Math.random() * 5 + 7) + "s";
 
         heart.style.animationDelay =
-            (
-                Math.random() * 7
-            ) + "s";
+            (Math.random() * 7) + "s";
 
+        heart.style.opacity =
+            (Math.random() * 0.35 + 0.15);
 
-        container.appendChild(
-            heart
-        );
-
+        container.appendChild(heart);
     }
-
 }
 
 
-createBackgroundHearts();
-
-
-
-/* ================================================= */
-/* OPEN SURPRISE */
-/* ================================================= */
+/* =========================================================
+   OPEN SURPRISE
+   ========================================================= */
 
 function openSurprise() {
 
-
     const opening =
-        document.getElementById(
-            "openingScreen"
-        );
-
+        document.getElementById("openingScreen");
 
     const main =
-        document.getElementById(
-            "mainExperience"
-        );
-
+        document.getElementById("mainExperience");
 
     const gift =
-        document.getElementById(
-            "gift"
-        );
-
+        document.getElementById("gift");
 
     const button =
-        document.getElementById(
-            "openButton"
+        document.getElementById("openButton");
+
+    if (!opening || !main || !gift || !button) {
+
+        console.error(
+            "Opening screen elements are missing."
         );
+
+        return;
+    }
 
 
     /* Prevent multiple clicks */
@@ -117,91 +91,102 @@ function openSurprise() {
     button.disabled = true;
 
 
-    /* Gift opening animation */
+    /* Gift animation */
 
     gift.style.animation =
-        "giftOpen 0.9s ease forwards";
+        "giftOpen 0.8s ease forwards";
 
 
-    /* Start music */
+    /* =====================================================
+       MUSIC
+       ===================================================== */
 
     const music =
-        document.getElementById(
-            "birthdayMusic"
-        );
+        document.getElementById("birthdayMusic");
+
+    if (music) {
+
+        music.volume = 0.55;
+
+        music.play().catch(function () {
+
+            console.log(
+                "Music autoplay was blocked by the browser."
+            );
+
+        });
+    }
 
 
-    music.play().catch(function () {
-
-        console.log(
-            "Music playback was blocked."
-        );
-
-    });
-
-
-    /* Reveal main experience */
+    /* =====================================================
+       REVEAL MAIN EXPERIENCE
+       ===================================================== */
 
     setTimeout(function () {
 
+        opening.classList.add("hidden");
 
-        opening.classList.add(
-            "hidden"
-        );
-
-
-        main.classList.remove(
-            "hidden"
-        );
+        main.classList.remove("hidden");
 
 
-        /*
-         * Start the slow
-         * Kavipriya animation.
-         */
+        /* Start name animation */
 
         startNameAnimation();
 
 
-        /* Celebration */
+        /* Birthday confetti */
 
         createConfetti();
 
 
     }, 900);
-
 }
 
 
+/* =========================================================
+   NAME ANIMATION
+   =========================================================
 
-/* ================================================= */
-/* NAME ANIMATION */
-/* ================================================= */
+   K
+   Ka
+   Kav
+   Kavi
+   Kavip
+   Kavipr
+   Kavipri
+   Kavipriy
+   Kavipriya
+
+   Slower animation:
+   650ms between each letter
+   ========================================================= */
 
 function startNameAnimation() {
 
-
     const nameElement =
-        document.getElementById(
-            "nameAnimation"
+        document.getElementById("nameAnimation");
+
+    if (!nameElement) {
+
+        console.error(
+            "nameAnimation element was not found."
         );
+
+        return;
+    }
 
 
     const name =
         "Kavipriya";
 
-
     let currentLength = 0;
 
 
-    function typeNextLetter() {
+    /* Start after the birthday title appears */
 
+    setTimeout(function typeNextLetter() {
 
-        if (
-            currentLength <
-            name.length
-        ) {
-
+        if (currentLength < name.length) {
 
             currentLength++;
 
@@ -214,71 +199,44 @@ function startNameAnimation() {
 
 
             /*
-             * 600 milliseconds
-             * between each letter.
+             * 650ms between each letter.
              *
-             * K
-             * Ka
-             * Kav
-             * Kavi
-             * ...
+             * This makes the animation much slower
+             * and more noticeable.
              */
 
             setTimeout(
                 typeNextLetter,
-                600
+                650
             );
-
         }
 
-    }
-
-
-    /*
-     * Wait a little after
-     * the birthday screen appears.
-     */
-
-    setTimeout(
-        typeNextLetter,
-        700
-    );
-
+    }, 1000);
 }
 
 
-
-/* ================================================= */
-/* CONFETTI */
-/* ================================================= */
+/* =========================================================
+   CONFETTI
+   ========================================================= */
 
 function createConfetti() {
 
-
     const emojis = [
-
         "🎉",
         "✨",
         "🎊",
         "💕",
         "❤️",
         "🎈",
-        "🌸"
-
+        "🌸",
+        "💖"
     ];
 
 
-    for (
-        let i = 0;
-        i < 70;
-        i++
-    ) {
-
+    for (let i = 0; i < 80; i++) {
 
         const piece =
-            document.createElement(
-                "div"
-            );
+            document.createElement("div");
 
 
         piece.innerText =
@@ -293,26 +251,17 @@ function createConfetti() {
         piece.style.position =
             "fixed";
 
-
         piece.style.left =
-            Math.random() * 100 +
-            "vw";
-
+            Math.random() * 100 + "vw";
 
         piece.style.top =
             "-40px";
 
-
         piece.style.fontSize =
-            (
-                Math.random() * 17 +
-                15
-            ) + "px";
-
+            (Math.random() * 18 + 15) + "px";
 
         piece.style.zIndex =
             "1000";
-
 
         piece.style.pointerEvents =
             "none";
@@ -326,9 +275,7 @@ function createConfetti() {
             `confettiFall ${duration}s linear`;
 
 
-        document.body.appendChild(
-            piece
-        );
+        document.body.appendChild(piece);
 
 
         setTimeout(function () {
@@ -336,43 +283,69 @@ function createConfetti() {
             piece.remove();
 
         }, duration * 1000);
-
     }
-
 }
 
 
+/* =========================================================
+   MAKE A WISH
+   =========================================================
 
-/* ================================================= */
-/* MAKE A WISH */
-/* ================================================= */
+   IMPORTANT:
+   This version DOES NOT depend on a specific ID.
+
+   It searches for:
+
+       .wish-heart
+
+   Therefore it won't crash with:
+
+       Cannot read properties of null
+       (reading 'dataset')
+   ========================================================= */
 
 function makeWish() {
 
-
     const heart =
-        document.getElementById(
-            "wishHeart"
-        );
-
+        document.querySelector(".wish-heart");
 
     const finalSection =
-        document.getElementById(
-            "finalSection"
+        document.getElementById("finalSection");
+
+
+    /* =====================================================
+       SAFETY CHECKS
+       ===================================================== */
+
+    if (!heart) {
+
+        console.error(
+            "ERROR: .wish-heart was not found."
         );
 
+        return;
+    }
 
-    /*
-     * Prevent multiple clicks.
-     */
+
+    if (!finalSection) {
+
+        console.error(
+            "ERROR: #finalSection was not found."
+        );
+
+        return;
+    }
+
+
+    /* =====================================================
+       PREVENT MULTIPLE CLICKS
+       ===================================================== */
 
     if (
-        heart.dataset.clicked ===
-        "true"
+        heart.dataset.clicked === "true"
     ) {
 
         return;
-
     }
 
 
@@ -380,57 +353,53 @@ function makeWish() {
         "true";
 
 
-    /*
-     * Start heart animation.
-     */
+    /* =====================================================
+       HEART CLICK ANIMATION
+       ===================================================== */
 
     heart.classList.add(
         "clicked"
     );
 
 
-    /*
-     * Create a small burst
-     * around the heart.
-     */
+    /* =====================================================
+       CREATE MAGICAL PARTICLE BURST
+       ===================================================== */
 
     createWishParticles();
 
 
-    /*
-     * After the heart disappears,
-     * reveal the magical final section.
-     */
+    /* =====================================================
+       CREATE EXTRA CONFETTI
+       ===================================================== */
+
+    createConfetti();
+
+
+    /* =====================================================
+       REVEAL FINAL MESSAGE
+       ===================================================== */
 
     setTimeout(function () {
-
 
         finalSection.classList.remove(
             "hidden"
         );
 
 
-        /*
-         * Create the shooting stars
-         * after the final screen exists.
-         */
+        /* Shooting stars */
 
         createShootingStars();
 
 
-        /*
-         * Create magical sparkles.
-         */
+        /* Sparkles */
 
         createFinalSparkles();
 
 
-        /*
-         * Scroll to the final message.
-         */
+        /* Scroll to final message */
 
         setTimeout(function () {
-
 
             finalSection.scrollIntoView({
 
@@ -440,54 +409,70 @@ function makeWish() {
 
             });
 
-
         }, 150);
 
 
     }, 1200);
-
 }
 
 
-
-/* ================================================= */
-/* WISH PARTICLES */
-/* ================================================= */
+/* =========================================================
+   WISH PARTICLES
+   ========================================================= */
 
 function createWishParticles() {
 
-
-    const particles = [
-
+    const symbols = [
         "❤️",
         "💕",
+        "💖",
         "✨",
         "💗",
-        "🌸"
-
+        "🌸",
+        "⭐"
     ];
 
 
-    for (
-        let i = 0;
-        i < 35;
-        i++
-    ) {
+    const heart =
+        document.querySelector(".wish-heart");
 
+
+    if (!heart) {
+        return;
+    }
+
+
+    const rect =
+        heart.getBoundingClientRect();
+
+
+    const centerX =
+        rect.left +
+        rect.width / 2;
+
+
+    const centerY =
+        rect.top +
+        rect.height / 2;
+
+
+    for (let i = 0; i < 35; i++) {
 
         const particle =
-            document.createElement(
-                "div"
-            );
+            document.createElement("div");
 
 
         particle.innerText =
-            particles[
+            symbols[
                 Math.floor(
                     Math.random() *
-                    particles.length
+                    symbols.length
                 )
             ];
+
+
+        particle.className =
+            "wish-particle";
 
 
         particle.style.position =
@@ -495,36 +480,35 @@ function createWishParticles() {
 
 
         particle.style.left =
-            "50%";
+            centerX + "px";
 
 
         particle.style.top =
-            "55%";
+            centerY + "px";
+
+
+        particle.style.fontSize =
+            (Math.random() * 12 + 14) + "px";
 
 
         particle.style.zIndex =
-            "1000";
+            "2000";
 
 
         particle.style.pointerEvents =
             "none";
 
 
-        particle.style.fontSize =
-            (
-                Math.random() * 15 +
-                15
-            ) + "px";
-
-
         const angle =
             Math.random() *
-            Math.PI * 2;
+            Math.PI *
+            2;
 
 
         const distance =
-            Math.random() * 250 +
-            80;
+            Math.random() *
+            180 +
+            70;
 
 
         const x =
@@ -537,44 +521,15 @@ function createWishParticles() {
             distance;
 
 
-        particle.animate(
+        particle.style.setProperty(
+            "--x",
+            x + "px"
+        );
 
-            [
 
-                {
-                    transform:
-                        "translate(-50%, -50%) scale(0.5)",
-
-                    opacity: 1
-
-                },
-
-                {
-
-                    transform:
-                        `translate(
-                            calc(-50% + ${x}px),
-                            calc(-50% + ${y}px)
-                        )
-                        scale(1.3)`,
-
-                    opacity: 0
-
-                }
-
-            ],
-
-            {
-
-                duration:
-                    1000 +
-                    Math.random() * 800,
-
-                easing:
-                    "cubic-bezier(.2,.8,.3,1)"
-
-            }
-
+        particle.style.setProperty(
+            "--y",
+            y + "px"
         );
 
 
@@ -587,62 +542,38 @@ function createWishParticles() {
 
             particle.remove();
 
-        }, 2000);
-
+        }, 1600);
     }
-
 }
 
 
-
-/* ================================================= */
-/* SHOOTING STARS */
-/* ================================================= */
+/* =========================================================
+   SHOOTING STARS
+   ========================================================= */
 
 function createShootingStars() {
 
-
-    const container =
-        document.getElementById(
-            "shootingStars"
-        );
-
-
-    for (
-        let i = 0;
-        i < 5;
-        i++
-    ) {
-
+    for (let i = 0; i < 12; i++) {
 
         setTimeout(function () {
 
-
             const star =
-                document.createElement(
-                    "div"
-                );
+                document.createElement("div");
 
 
             star.className =
                 "shooting-star";
 
 
+            star.style.left =
+                Math.random() * 100 + "vw";
+
+
             star.style.top =
-                (
-                    Math.random() * 50 +
-                    5
-                ) + "%";
+                Math.random() * 60 + "vh";
 
 
-            star.style.animationDuration =
-                (
-                    Math.random() * 1 +
-                    1.2
-                ) + "s";
-
-
-            container.appendChild(
+            document.body.appendChild(
                 star
             );
 
@@ -651,117 +582,86 @@ function createShootingStars() {
 
                 star.remove();
 
-            }, 2000);
+            }, 1800);
 
-
-        }, i * 700);
-
+        }, i * 180);
     }
-
 }
 
 
-
-/* ================================================= */
-/* FINAL SPARKLES */
-/* ================================================= */
+/* =========================================================
+   FINAL SPARKLES
+   ========================================================= */
 
 function createFinalSparkles() {
 
-
-    const container =
-        document.getElementById(
-            "finalSparkles"
-        );
-
-
-    const sparkleCharacters = [
-
+    const symbols = [
         "✨",
-        "✦",
-        "⋆",
-        "💫"
-
+        "⭐",
+        "💖",
+        "💕",
+        "🌸"
     ];
 
 
-    for (
-        let i = 0;
-        i < 35;
-        i++
-    ) {
+    for (let i = 0; i < 30; i++) {
+
+        const sparkle =
+            document.createElement("div");
+
+
+        sparkle.innerText =
+            symbols[
+                Math.floor(
+                    Math.random() *
+                    symbols.length
+                )
+            ];
+
+
+        sparkle.className =
+            "final-sparkle";
+
+
+        sparkle.style.left =
+            Math.random() * 100 + "vw";
+
+
+        sparkle.style.top =
+            Math.random() * 100 + "vh";
+
+
+        sparkle.style.animationDelay =
+            Math.random() * 2 + "s";
+
+
+        document.body.appendChild(
+            sparkle
+        );
 
 
         setTimeout(function () {
 
+            sparkle.remove();
 
-            const sparkle =
-                document.createElement(
-                    "div"
-                );
-
-
-            sparkle.className =
-                "final-sparkle";
-
-
-            sparkle.innerText =
-                sparkleCharacters[
-                    Math.floor(
-                        Math.random() *
-                        sparkleCharacters.length
-                    )
-                ];
-
-
-            sparkle.style.left =
-                Math.random() * 100 +
-                "%";
-
-
-            sparkle.style.top =
-                Math.random() * 100 +
-                "%";
-
-
-            sparkle.style.animationDuration =
-                (
-                    Math.random() * 2 +
-                    2
-                ) + "s";
-
-
-            container.appendChild(
-                sparkle
-            );
-
-
-            setTimeout(function () {
-
-                sparkle.remove();
-
-            }, 4000);
-
-
-        }, i * 120);
-
+        }, 4500);
     }
-
 }
 
 
+/* =========================================================
+   EXTRA ANIMATIONS
+   ========================================================= */
 
-/* ================================================= */
-/* EXTRA ANIMATIONS */
-/* ================================================= */
-
-const dynamicStyle =
-    document.createElement(
-        "style"
-    );
+const style =
+    document.createElement("style");
 
 
-dynamicStyle.innerHTML = `
+style.innerHTML = `
+
+/* =====================================================
+   GIFT OPEN
+   ===================================================== */
 
 @keyframes giftOpen {
 
@@ -771,15 +671,19 @@ dynamicStyle.innerHTML = `
             scale(1)
             rotate(0deg);
 
+        opacity: 1;
     }
 
-    40% {
+
+    50% {
 
         transform:
-            scale(1.35)
-            rotate(-8deg);
+            scale(1.4)
+            rotate(-10deg);
 
+        opacity: 1;
     }
+
 
     100% {
 
@@ -788,11 +692,14 @@ dynamicStyle.innerHTML = `
             rotate(20deg);
 
         opacity: 0;
-
     }
 
 }
 
+
+/* =====================================================
+   CONFETTI FALL
+   ===================================================== */
 
 @keyframes confettiFall {
 
@@ -803,14 +710,252 @@ dynamicStyle.innerHTML = `
             rotate(0deg);
 
         opacity: 1;
-
     }
+
 
     100% {
 
         transform:
             translateY(110vh)
             rotate(720deg);
+
+        opacity: 0;
+    }
+
+}
+
+
+/* =====================================================
+   WISH HEART CLICK
+   ===================================================== */
+
+.wish-heart.clicked {
+
+    animation:
+        heartDisappear 1.1s
+        ease forwards;
+
+}
+
+
+@keyframes heartDisappear {
+
+    0% {
+
+        transform:
+            scale(1);
+
+        opacity: 1;
+
+    }
+
+
+    25% {
+
+        transform:
+            scale(1.4);
+
+        opacity: 1;
+
+    }
+
+
+    60% {
+
+        transform:
+            scale(1.8);
+
+        opacity: 0.7;
+
+    }
+
+
+    100% {
+
+        transform:
+            scale(0);
+
+        opacity: 0;
+
+    }
+
+}
+
+
+/* =====================================================
+   WISH PARTICLES
+   ===================================================== */
+
+.wish-particle {
+
+    animation:
+        wishParticleBurst
+        1.6s
+        ease-out
+        forwards;
+
+}
+
+
+@keyframes wishParticleBurst {
+
+    0% {
+
+        transform:
+            translate(-50%, -50%)
+            scale(0.5);
+
+        opacity: 1;
+
+    }
+
+
+    100% {
+
+        transform:
+            translate(
+                calc(-50% + var(--x)),
+                calc(-50% + var(--y))
+            )
+            scale(1.2);
+
+        opacity: 0;
+
+    }
+
+}
+
+
+/* =====================================================
+   SHOOTING STARS
+   ===================================================== */
+
+.shooting-star {
+
+    position: fixed;
+
+    width: 90px;
+
+    height: 3px;
+
+    background: white;
+
+    border-radius: 50%;
+
+    opacity: 0;
+
+    transform:
+        rotate(-35deg);
+
+    z-index: 1500;
+
+    pointer-events: none;
+
+    animation:
+        shootingStar
+        1.5s
+        ease-out
+        forwards;
+
+}
+
+
+@keyframes shootingStar {
+
+    0% {
+
+        transform:
+            translate(0, 0)
+            rotate(-35deg);
+
+        opacity: 0;
+
+    }
+
+
+    15% {
+
+        opacity: 1;
+
+    }
+
+
+    100% {
+
+        transform:
+            translate(-350px, 350px)
+            rotate(-35deg);
+
+        opacity: 0;
+
+    }
+
+}
+
+
+/* =====================================================
+   FINAL SPARKLES
+   ===================================================== */
+
+.final-sparkle {
+
+    position: fixed;
+
+    font-size: 22px;
+
+    z-index: 1200;
+
+    pointer-events: none;
+
+    animation:
+        finalSparkleAnimation
+        4s
+        ease-in-out
+        forwards;
+
+}
+
+
+@keyframes finalSparkleAnimation {
+
+    0% {
+
+        transform:
+            scale(0)
+            rotate(0deg);
+
+        opacity: 0;
+
+    }
+
+
+    20% {
+
+        transform:
+            scale(1.2)
+            rotate(90deg);
+
+        opacity: 1;
+
+    }
+
+
+    60% {
+
+        transform:
+            scale(1)
+            rotate(180deg);
+
+        opacity: 0.8;
+
+    }
+
+
+    100% {
+
+        transform:
+            scale(0)
+            rotate(360deg);
 
         opacity: 0;
 
@@ -822,5 +967,54 @@ dynamicStyle.innerHTML = `
 
 
 document.head.appendChild(
-    dynamicStyle
+    style
+);
+
+
+/* =========================================================
+   INITIALIZE
+   ========================================================= */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function () {
+
+
+        /* Background hearts */
+
+        createBackgroundHearts();
+
+
+        /*
+         * Attach the heart click through JavaScript.
+         *
+         * This means you DON'T need:
+         *
+         * onclick="makeWish()"
+         *
+         * in the HTML.
+         */
+
+        const heart =
+            document.querySelector(
+                ".wish-heart"
+            );
+
+
+        if (heart) {
+
+            heart.addEventListener(
+                "click",
+                makeWish
+            );
+
+        } else {
+
+            console.warn(
+                "The .wish-heart element was not found on page load."
+            );
+
+        }
+
+    }
 );
