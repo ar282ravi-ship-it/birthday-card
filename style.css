@@ -1680,3 +1680,55 @@ button:disabled {
     }
 
 }
+
+/* ================================================= */
+/* FINAL INTERACTION FIXES */
+/* ================================================= */
+
+.wish-heart {
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.wish-heart.clicked {
+    pointer-events: none;
+}
+
+.wish-particle {
+    position: fixed;
+    pointer-events: none;
+    z-index: 2000;
+    animation: wishParticleBurst 1.6s ease-out forwards;
+}
+
+@keyframes wishParticleBurst {
+    0% {
+        transform: translate(-50%, -50%) scale(0.5);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(calc(-50% + var(--x)), calc(-50% + var(--y))) scale(1.2);
+        opacity: 0;
+    }
+}
+
+.confetti-piece {
+    position: fixed;
+    top: -40px;
+    pointer-events: none;
+    z-index: 1000;
+    animation-name: confettiFall;
+    animation-timing-function: linear;
+    animation-fill-mode: forwards;
+}
+
+@keyframes confettiFall {
+    from {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+    }
+    to {
+        transform: translateY(110vh) rotate(720deg);
+        opacity: 0;
+    }
+}
