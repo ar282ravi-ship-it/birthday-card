@@ -318,12 +318,16 @@ button:disabled {
 /* ================================================= */
 
 .hero-photo {
+    width: 245px !important;
+    height: 275px !important;
 
-    width: 245px;
+    min-width: 245px;
+    min-height: 275px;
 
-    height: 275px;
+    max-width: 245px;
+    max-height: 275px;
 
-    padding: 9px;
+    padding: 8px;
 
     margin-top: 15px;
 
@@ -333,38 +337,28 @@ button:disabled {
         0 20px 50px
         rgba(0, 0, 0, 0.3);
 
-    transform:
-        rotate(2deg);
+    transform: rotate(2deg);
 
     animation:
         heroPhotoReveal 1.5s ease;
+
+    overflow: hidden;
 }
 
 
-.hero-friend-photo {
+.hero-photo img.hero-friend-photo {
+    display: block;
 
-    width: 100%;
+    width: 100% !important;
+    height: 100% !important;
 
-    height: 100%;
+    max-width: 100% !important;
+    max-height: 100% !important;
 
     object-fit: cover;
 
-    display: block;
+    margin: 0;
 }
-
-
-.scroll-hint {
-
-    margin-top: 22px;
-
-    font-size: 32px;
-
-    opacity: 0.8;
-
-    animation:
-        scrollBounce 2s infinite;
-}
-
 
 
 /* ================================================= */
