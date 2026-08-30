@@ -7,41 +7,61 @@ function createBackgroundHearts() {
     const container =
         document.getElementById("backgroundHearts");
 
+
     const hearts = [
+
         "❤️",
         "💕",
         "💗",
         "✨",
         "🤍"
+
     ];
 
-    for (let i = 0; i < 20; i++) {
+
+    for (let i = 0; i < 25; i++) {
 
         const heart =
             document.createElement("span");
 
+
         heart.innerText =
             hearts[
-                Math.floor(Math.random() * hearts.length)
+                Math.floor(
+                    Math.random() *
+                    hearts.length
+                )
             ];
+
 
         heart.style.left =
             Math.random() * 100 + "vw";
 
+
         heart.style.fontSize =
-            (Math.random() * 20 + 15) + "px";
+            (Math.random() * 20 + 15)
+            + "px";
+
 
         heart.style.animationDuration =
-            (Math.random() * 5 + 6) + "s";
+            (Math.random() * 5 + 7)
+            + "s";
+
 
         heart.style.animationDelay =
-            (Math.random() * 5) + "s";
+            (Math.random() * 7)
+            + "s";
+
 
         container.appendChild(heart);
+
     }
+
 }
 
+
 createBackgroundHearts();
+
 
 
 /* ================================================= */
@@ -50,21 +70,37 @@ createBackgroundHearts();
 
 function openSurprise() {
 
+
     const opening =
-        document.getElementById("openingScreen");
+        document.getElementById(
+            "openingScreen"
+        );
+
 
     const main =
-        document.getElementById("mainExperience");
+        document.getElementById(
+            "mainExperience"
+        );
+
 
     const gift =
-        document.getElementById("gift");
+        document.getElementById(
+            "gift"
+        );
+
 
     const button =
-        document.getElementById("openButton");
+        document.getElementById(
+            "openButton"
+        );
+
+
+    /* Prevent double clicking */
 
     button.disabled = true;
 
-    /* Gift opening animation */
+
+    /* Animate gift */
 
     gift.style.animation =
         "giftOpen 0.8s ease forwards";
@@ -73,31 +109,49 @@ function openSurprise() {
     /* Start music */
 
     const music =
-        document.getElementById("birthdayMusic");
+        document.getElementById(
+            "birthdayMusic"
+        );
+
 
     music.play().catch(function () {
 
         console.log(
-            "Music autoplay was blocked."
+            "Music playback was blocked."
         );
 
     });
 
 
-    /* Reveal birthday experience */
+    /* Reveal main page */
 
     setTimeout(function () {
 
-        opening.classList.add("hidden");
 
-        main.classList.remove("hidden");
+        opening.classList.add(
+            "hidden"
+        );
+
+
+        main.classList.remove(
+            "hidden"
+        );
+
+
+        /* Start name animation */
 
         startNameAnimation();
 
+
+        /* Initial celebration */
+
         createConfetti();
 
+
     }, 900);
+
 }
+
 
 
 /* ================================================= */
@@ -106,36 +160,58 @@ function openSurprise() {
 
 function startNameAnimation() {
 
-    const nameElement =
-        document.getElementById("nameAnimation");
 
-    const name = "Kavipriya";
+    const nameElement =
+        document.getElementById(
+            "nameAnimation"
+        );
+
+
+    const name =
+        "Kavipriya";
+
 
     let currentLength = 0;
 
 
     function typeNextLetter() {
 
-        if (currentLength < name.length) {
+
+        if (
+            currentLength <
+            name.length
+        ) {
+
 
             currentLength++;
 
+
             nameElement.innerText =
-                name.substring(0, currentLength);
+                name.substring(
+                    0,
+                    currentLength
+                );
+
 
             setTimeout(
                 typeNextLetter,
                 350
             );
+
         }
+
     }
 
+
+    /* Start after page appears */
 
     setTimeout(
         typeNextLetter,
         700
     );
+
 }
+
 
 
 /* ================================================= */
@@ -144,7 +220,9 @@ function startNameAnimation() {
 
 function createConfetti() {
 
+
     const emojis = [
+
         "🎉",
         "✨",
         "🎊",
@@ -152,13 +230,22 @@ function createConfetti() {
         "❤️",
         "🎈",
         "🌸"
+
     ];
 
 
-    for (let i = 0; i < 80; i++) {
+    for (
+        let i = 0;
+        i < 80;
+        i++
+    ) {
+
 
         const piece =
-            document.createElement("div");
+            document.createElement(
+                "div"
+            );
+
 
         piece.innerText =
             emojis[
@@ -168,39 +255,56 @@ function createConfetti() {
                 )
             ];
 
+
         piece.style.position =
             "fixed";
 
+
         piece.style.left =
-            Math.random() * 100 + "vw";
+            Math.random() * 100
+            + "vw";
+
 
         piece.style.top =
             "-40px";
 
+
         piece.style.fontSize =
-            (Math.random() * 18 + 15) + "px";
+            (Math.random() * 18 + 15)
+            + "px";
+
 
         piece.style.zIndex =
             "1000";
 
+
         piece.style.pointerEvents =
             "none";
+
 
         const duration =
             Math.random() * 3 + 3;
 
+
         piece.style.animation =
             `confettiFall ${duration}s linear`;
 
-        document.body.appendChild(piece);
+
+        document.body.appendChild(
+            piece
+        );
+
 
         setTimeout(function () {
 
             piece.remove();
 
         }, duration * 1000);
+
     }
+
 }
+
 
 
 /* ================================================= */
@@ -209,95 +313,73 @@ function createConfetti() {
 
 function makeWish() {
 
+
     const flame =
-        document.getElementById("flame");
+        document.getElementById(
+            "flame"
+        );
 
-    const button =
-        document.getElementById("wishButton");
+
+    /* Prevent multiple clicks */
+
+    if (
+        flame.dataset.blown ===
+        "true"
+    ) {
+
+        return;
+
+    }
 
 
-    flame.innerText = "💨";
+    flame.dataset.blown =
+        "true";
 
-    flame.style.animation = "none";
 
-    button.innerText =
-        "Wish Made ❤️";
+    /* Put out the candle */
 
-    button.disabled = true;
+    flame.innerText =
+        "💨";
 
+
+    flame.style.animation =
+        "none";
+
+
+    flame.style.cursor =
+        "default";
+
+
+    /* Celebration */
 
     createConfetti();
 
 
+    /* Reveal final message */
+
     setTimeout(function () {
 
-        const finalSection =
-            document.getElementById("finalSection");
 
-        finalSection.classList.remove("hidden");
+        const finalSection =
+            document.getElementById(
+                "finalSection"
+            );
+
+
+        finalSection.classList.remove(
+            "hidden"
+        );
+
 
         finalSection.scrollIntoView({
-            behavior: "smooth"
+
+            behavior: "smooth",
+
+            block: "center"
+
         });
 
+
     }, 1800);
+
 }
-
-
-/* ================================================= */
-/* EXTRA ANIMATIONS */
-/* ================================================= */
-
-const style =
-    document.createElement("style");
-
-style.innerHTML = `
-
-@keyframes giftOpen {
-
-    0% {
-        transform:
-            scale(1)
-            rotate(0);
-    }
-
-    50% {
-        transform:
-            scale(1.4)
-            rotate(-10deg);
-    }
-
-    100% {
-        transform:
-            scale(0)
-            rotate(20deg);
-
-        opacity: 0;
-    }
-}
-
-
-@keyframes confettiFall {
-
-    0% {
-
-        transform:
-            translateY(0)
-            rotate(0deg);
-
-        opacity: 1;
-    }
-
-    100% {
-
-        transform:
-            translateY(110vh)
-            rotate(720deg);
-
-        opacity: 0;
-    }
-}
-
-`;
-
-document.head.appendChild(style);
