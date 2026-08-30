@@ -5,7 +5,9 @@
 function createBackgroundHearts() {
 
     const container =
-        document.getElementById("backgroundHearts");
+        document.getElementById(
+            "backgroundHearts"
+        );
 
 
     const hearts = [
@@ -19,10 +21,17 @@ function createBackgroundHearts() {
     ];
 
 
-    for (let i = 0; i < 25; i++) {
+    for (
+        let i = 0;
+        i < 22;
+        i++
+    ) {
+
 
         const heart =
-            document.createElement("span");
+            document.createElement(
+                "span"
+            );
 
 
         heart.innerText =
@@ -35,25 +44,33 @@ function createBackgroundHearts() {
 
 
         heart.style.left =
-            Math.random() * 100 + "vw";
+            Math.random() * 100 +
+            "vw";
 
 
         heart.style.fontSize =
-            (Math.random() * 20 + 15)
-            + "px";
+            (
+                Math.random() * 18 +
+                15
+            ) + "px";
 
 
         heart.style.animationDuration =
-            (Math.random() * 5 + 7)
-            + "s";
+            (
+                Math.random() * 5 +
+                7
+            ) + "s";
 
 
         heart.style.animationDelay =
-            (Math.random() * 7)
-            + "s";
+            (
+                Math.random() * 7
+            ) + "s";
 
 
-        container.appendChild(heart);
+        container.appendChild(
+            heart
+        );
 
     }
 
@@ -95,15 +112,15 @@ function openSurprise() {
         );
 
 
-    /* Prevent double clicking */
+    /* Prevent multiple clicks */
 
     button.disabled = true;
 
 
-    /* Animate gift */
+    /* Gift opening animation */
 
     gift.style.animation =
-        "giftOpen 0.8s ease forwards";
+        "giftOpen 0.9s ease forwards";
 
 
     /* Start music */
@@ -123,7 +140,7 @@ function openSurprise() {
     });
 
 
-    /* Reveal main page */
+    /* Reveal main experience */
 
     setTimeout(function () {
 
@@ -138,12 +155,15 @@ function openSurprise() {
         );
 
 
-        /* Start name animation */
+        /*
+         * Start the slow
+         * Kavipriya animation.
+         */
 
         startNameAnimation();
 
 
-        /* Initial celebration */
+        /* Celebration */
 
         createConfetti();
 
@@ -193,9 +213,20 @@ function startNameAnimation() {
                 );
 
 
+            /*
+             * 600 milliseconds
+             * between each letter.
+             *
+             * K
+             * Ka
+             * Kav
+             * Kavi
+             * ...
+             */
+
             setTimeout(
                 typeNextLetter,
-                350
+                600
             );
 
         }
@@ -203,7 +234,10 @@ function startNameAnimation() {
     }
 
 
-    /* Start after page appears */
+    /*
+     * Wait a little after
+     * the birthday screen appears.
+     */
 
     setTimeout(
         typeNextLetter,
@@ -236,7 +270,7 @@ function createConfetti() {
 
     for (
         let i = 0;
-        i < 80;
+        i < 70;
         i++
     ) {
 
@@ -261,8 +295,8 @@ function createConfetti() {
 
 
         piece.style.left =
-            Math.random() * 100
-            + "vw";
+            Math.random() * 100 +
+            "vw";
 
 
         piece.style.top =
@@ -270,8 +304,10 @@ function createConfetti() {
 
 
         piece.style.fontSize =
-            (Math.random() * 18 + 15)
-            + "px";
+            (
+                Math.random() * 17 +
+                15
+            ) + "px";
 
 
         piece.style.zIndex =
@@ -313,60 +349,478 @@ function createConfetti() {
 
 function makeWish() {
 
-    const flame =
-        document.getElementById("flame");
+
+    const heart =
+        document.getElementById(
+            "wishHeart"
+        );
+
 
     const finalSection =
-        document.getElementById("finalSection");
-
-
-    /* Prevent multiple clicks */
-
-    if (flame.dataset.blown === "true") {
-        return;
-    }
-
-
-    flame.dataset.blown = "true";
-
-
-    /* Blow out the candle */
-
-    flame.innerText = "💨";
-
-    flame.style.animation = "none";
-
-    flame.style.cursor = "default";
-
-
-    /* Small celebration */
-
-    createConfetti();
+        document.getElementById(
+            "finalSection"
+        );
 
 
     /*
-       Wait for the smoke effect,
-       then reveal the final message.
-    */
+     * Prevent multiple clicks.
+     */
+
+    if (
+        heart.dataset.clicked ===
+        "true"
+    ) {
+
+        return;
+
+    }
+
+
+    heart.dataset.clicked =
+        "true";
+
+
+    /*
+     * Start heart animation.
+     */
+
+    heart.classList.add(
+        "clicked"
+    );
+
+
+    /*
+     * Create a small burst
+     * around the heart.
+     */
+
+    createWishParticles();
+
+
+    /*
+     * After the heart disappears,
+     * reveal the magical final section.
+     */
 
     setTimeout(function () {
 
-        finalSection.classList.remove("hidden");
+
+        finalSection.classList.remove(
+            "hidden"
+        );
+
 
         /*
-           Give the browser a moment to
-           render the section before scrolling.
-        */
+         * Create the shooting stars
+         * after the final screen exists.
+         */
+
+        createShootingStars();
+
+
+        /*
+         * Create magical sparkles.
+         */
+
+        createFinalSparkles();
+
+
+        /*
+         * Scroll to the final message.
+         */
 
         setTimeout(function () {
 
+
             finalSection.scrollIntoView({
+
                 behavior: "smooth",
+
                 block: "start"
+
             });
 
-        }, 100);
+
+        }, 150);
+
 
     }, 1200);
 
 }
+
+
+
+/* ================================================= */
+/* WISH PARTICLES */
+/* ================================================= */
+
+function createWishParticles() {
+
+
+    const particles = [
+
+        "❤️",
+        "💕",
+        "✨",
+        "💗",
+        "🌸"
+
+    ];
+
+
+    for (
+        let i = 0;
+        i < 35;
+        i++
+    ) {
+
+
+        const particle =
+            document.createElement(
+                "div"
+            );
+
+
+        particle.innerText =
+            particles[
+                Math.floor(
+                    Math.random() *
+                    particles.length
+                )
+            ];
+
+
+        particle.style.position =
+            "fixed";
+
+
+        particle.style.left =
+            "50%";
+
+
+        particle.style.top =
+            "55%";
+
+
+        particle.style.zIndex =
+            "1000";
+
+
+        particle.style.pointerEvents =
+            "none";
+
+
+        particle.style.fontSize =
+            (
+                Math.random() * 15 +
+                15
+            ) + "px";
+
+
+        const angle =
+            Math.random() *
+            Math.PI * 2;
+
+
+        const distance =
+            Math.random() * 250 +
+            80;
+
+
+        const x =
+            Math.cos(angle) *
+            distance;
+
+
+        const y =
+            Math.sin(angle) *
+            distance;
+
+
+        particle.animate(
+
+            [
+
+                {
+                    transform:
+                        "translate(-50%, -50%) scale(0.5)",
+
+                    opacity: 1
+
+                },
+
+                {
+
+                    transform:
+                        `translate(
+                            calc(-50% + ${x}px),
+                            calc(-50% + ${y}px)
+                        )
+                        scale(1.3)`,
+
+                    opacity: 0
+
+                }
+
+            ],
+
+            {
+
+                duration:
+                    1000 +
+                    Math.random() * 800,
+
+                easing:
+                    "cubic-bezier(.2,.8,.3,1)"
+
+            }
+
+        );
+
+
+        document.body.appendChild(
+            particle
+        );
+
+
+        setTimeout(function () {
+
+            particle.remove();
+
+        }, 2000);
+
+    }
+
+}
+
+
+
+/* ================================================= */
+/* SHOOTING STARS */
+/* ================================================= */
+
+function createShootingStars() {
+
+
+    const container =
+        document.getElementById(
+            "shootingStars"
+        );
+
+
+    for (
+        let i = 0;
+        i < 5;
+        i++
+    ) {
+
+
+        setTimeout(function () {
+
+
+            const star =
+                document.createElement(
+                    "div"
+                );
+
+
+            star.className =
+                "shooting-star";
+
+
+            star.style.top =
+                (
+                    Math.random() * 50 +
+                    5
+                ) + "%";
+
+
+            star.style.animationDuration =
+                (
+                    Math.random() * 1 +
+                    1.2
+                ) + "s";
+
+
+            container.appendChild(
+                star
+            );
+
+
+            setTimeout(function () {
+
+                star.remove();
+
+            }, 2000);
+
+
+        }, i * 700);
+
+    }
+
+}
+
+
+
+/* ================================================= */
+/* FINAL SPARKLES */
+/* ================================================= */
+
+function createFinalSparkles() {
+
+
+    const container =
+        document.getElementById(
+            "finalSparkles"
+        );
+
+
+    const sparkleCharacters = [
+
+        "✨",
+        "✦",
+        "⋆",
+        "💫"
+
+    ];
+
+
+    for (
+        let i = 0;
+        i < 35;
+        i++
+    ) {
+
+
+        setTimeout(function () {
+
+
+            const sparkle =
+                document.createElement(
+                    "div"
+                );
+
+
+            sparkle.className =
+                "final-sparkle";
+
+
+            sparkle.innerText =
+                sparkleCharacters[
+                    Math.floor(
+                        Math.random() *
+                        sparkleCharacters.length
+                    )
+                ];
+
+
+            sparkle.style.left =
+                Math.random() * 100 +
+                "%";
+
+
+            sparkle.style.top =
+                Math.random() * 100 +
+                "%";
+
+
+            sparkle.style.animationDuration =
+                (
+                    Math.random() * 2 +
+                    2
+                ) + "s";
+
+
+            container.appendChild(
+                sparkle
+            );
+
+
+            setTimeout(function () {
+
+                sparkle.remove();
+
+            }, 4000);
+
+
+        }, i * 120);
+
+    }
+
+}
+
+
+
+/* ================================================= */
+/* EXTRA ANIMATIONS */
+/* ================================================= */
+
+const dynamicStyle =
+    document.createElement(
+        "style"
+    );
+
+
+dynamicStyle.innerHTML = `
+
+@keyframes giftOpen {
+
+    0% {
+
+        transform:
+            scale(1)
+            rotate(0deg);
+
+    }
+
+    40% {
+
+        transform:
+            scale(1.35)
+            rotate(-8deg);
+
+    }
+
+    100% {
+
+        transform:
+            scale(0)
+            rotate(20deg);
+
+        opacity: 0;
+
+    }
+
+}
+
+
+@keyframes confettiFall {
+
+    0% {
+
+        transform:
+            translateY(0)
+            rotate(0deg);
+
+        opacity: 1;
+
+    }
+
+    100% {
+
+        transform:
+            translateY(110vh)
+            rotate(720deg);
+
+        opacity: 0;
+
+    }
+
+}
+
+`;
+
+
+document.head.appendChild(
+    dynamicStyle
+);
